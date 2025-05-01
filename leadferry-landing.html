@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadFerry.pro - Custom Automation Solutions That Drive Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-magenta: #FF2FB5;
+            --dark-magenta: #D11C9E;
+            --black: #000000;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --text-gray: #666666;
+            --accent-gradient: linear-gradient(135deg, #FF2FB5 0%, #FF1493 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Logo - Top Left */
+        .logo-container {
+            position: fixed;
+            top: 30px;
+            left: 40px;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 20px;
+            transform: perspective(500px) rotateY(-15deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: perspective(500px) rotateY(0deg);
+        }
+        
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            text-align: center;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 400px;
+            background: radial-gradient(circle at top center, rgba(255, 47, 181, 0.1), transparent);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 24px;
+            color: #CCCCCC;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-primary {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(255, 47, 181, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 47, 181, 0.4);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .case-study-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--primary-magenta);
+        }
+        
+        /* How We Work */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .process-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 47, 181, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .process-card:hover {
+            background: rgba(255, 47, 181, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .process-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .process-card p {
+            color: #CCCCCC;
+            font-size: 16px;
+        }
+        
+        /* Solutions Section */
+        .solutions {
+            background: linear-gradient(180deg, var(--black) 0%, rgba(20, 0, 10, 1) 100%);
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .solution-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 47, 181, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            background: rgba(255, 47, 181, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 47, 181, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+        
+        .solution-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .solution-card p {
+            color: #CCCCCC;
+            margin-bottom: 24px;
+        }
+        
+        .solution-features {
+            list-style: none;
+        }
+        
+        .solution-features li {
+            color: #CCCCCC;
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+        
+        .solution-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-magenta);
+        }
+        
+        /* Case Studies */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .case-study {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 47, 181, 0.2);
+        }
+        
+        .case-study-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 24px;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-magenta);
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #CCCCCC;
+        }
+        
+        .case-study-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        
+        .case-study-author {
+            font-size: 14px;
+            color: #CCCCCC;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+            background: var(--black);
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 47, 181, 0.1), transparent);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            color: #CCCCCC;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-magenta);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 47, 181, 0.2);
+            color: #CCCCCC;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .process-grid, .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 56px;
+            }
+            
+            .section-title {
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                top: 20px;
+                left: 20px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 38px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .cta-primary {
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+            
+            .process-grid, .solutions-grid, .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .case-study-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .stat {
+                border-bottom: 1px solid rgba(255, 47, 181, 0.2);
+                padding-bottom: 16px;
+            }
+            
+            .stat:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            
+            .solution-card h3, .process-card h3 {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+            
+            .process-card, .solution-card, .case-study {
+                padding: 24px;
+            }
+        }
+    </style>
+    
+    <!-- Calendly badge widget begin -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+    <!-- Calendly badge widget end -->
+</head>
+<body>
+    <div class="logo-container">
+        <a href="#" class="logo">
+            <div class="logo-icon">LF</div>
+            <span class="logo-text">LeadFerry</span>
+        </a>
+    </div>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="container">
+                    <h1>Save 40+ Hours Per Week<br>With Custom Automation</h1>
+                    <p>Stop using generic automation tools. Get custom-built software that eliminates manual work and scales your business automatically.</p>
+                    <a href="https://calendly.com/nathan-315/15min" onclick="event.preventDefault(); openCalendly();" class="cta-primary">Book a Call - Let's Talk</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="how-we-work">
+            <div class="container">
+                <h2 class="section-title">How We Work</h2>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-number">1</div>
+                        <h3>Discover What Slows You Down</h3>
+                        <p>We identify your biggest time-wasters and manual processes that are holding your business back.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">2</div>
+                        <h3>Design Your Time Machine</h3>
+                        <p>We create custom automation that eliminates your specific pain points and fits perfectly into your workflow.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">3</div>
+                        <h3>Watch Your Business Scale</h3>
+                        <p>Your team reclaims hours every week while your business runs smoother and grows faster.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="solutions">
+            <div class="container">
+                <h2 class="section-title">Results We Deliver</h2>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">🤖</div>
+                        <h3>Work Less, Earn More</h3>
+                        <p>Let AI handle your repetitive tasks so you can focus on growing your business and spending time on what matters.</p>
+                        <ul class="solution-features">
+                            <li>24/7 automated operations</li>
+                            <li>Eliminate human error</li>
+                            <li>Scale without hiring</li>
+                            <li>Instant task completion</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">🔄</div>
+                        <h3>Stop Switching Between Tools</h3>
+                        <p>Connect everything you use into one seamless system that works exactly how you need it to.</p>
+                        <ul class="solution-features">
+                            <li>One unified system</li>
+                            <li>Eliminate data entry</li>
+                            <li>Instant information flow</li>
+                            <li>No more missed updates</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">📊</div>
+                        <h3>Make Decisions in Minutes, Not Days</h3>
+                        <p>Get instant insights and automated reporting that shows you exactly what's driving your business forward.</p>
+                        <ul class="solution-features">
+                            <li>Real-time performance tracking</li>
+                            <li>Automated daily reports</li>
+                            <li>Instant alerts on key metrics</li>
+                            <li>No more manual data analysis</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">⚡</div>
+                        <h3>Turn Hours Into Minutes</h3>
+                        <p>Transform time-consuming processes into automated workflows that complete instantly.</p>
+                        <ul class="solution-features">
+                            <li>Tasks run automatically</li>
+                            <li>Eliminate manual follow-ups</li>
+                            <li>Instant customer responses</li>
+                            <li>Workflow magic</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="case-studies">
+            <div class="container">
+                <h2 class="section-title">What Our Clients Are Experiencing</h2>
+                <div class="case-studies-grid">
+                    <div class="case-study">
+                        <h3 class="case-study-title">Reclaiming Time for High-Value Work</h3>
+                        <p class="case-study-text">Our clients are saving hours each week on repetitive tasks. By automating their manual processes, they're able to focus on growth strategies and client relationships instead of administrative work.</p>
+                        <p class="case-study-author">Early Adopter Companies</p>
+                    </div>
+                    <div class="case-study">
+                        <h3 class="case-study-title">Scaling Without Growing Teams</h3>
+                        <p class="case-study-text">Companies using our custom automation are handling more work with the same team size. The automation solutions we build run 24/7, allowing businesses to grow revenue without proportionally increasing overhead.</p>
+                        <p class="case-study-author">Growing Businesses</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <div class="cta-content">
+                <div class="container">
+                    <h2>Ready to Automate Your Business?</h2>
+                    <p>Stop wasting time on tasks that can be automated. Let's build custom software that transforms your business.</p>
+                    <a href="https://calendly.com/nathan-315/15min" onclick="event.preventDefault(); openCalendly();" class="cta-primary">Book Your Free Strategy Call</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">AI Automation</a></li>
+                        <li><a href="#">System Integration</a></li>
+                        <li><a href="#">Custom Analytics</a></li>
+                        <li><a href="#">Process Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LeadFerry.pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Calendly inline widget begin -->
+    <script type="text/javascript">
+        function openCalendly() {
+            if (window.Calendly) {
+                Calendly.initPopupWidget({url: 'https://calendly.com/nathan-315/15min'});
+            } else {
+                window.open('https://calendly.com/nathan-315/15min', '_blank');
+            }
+        }
+        
+        window.addEventListener('mouseleave', function() {
+            if(window.Calendly) {
+                Calendly.initPopupWidget({url: 'https://calendly.com/nathan-315/15min'});
+            }
+        });
+    </script>
+    <!-- Calendly inline widget end -->
+</body>
+</html>
